@@ -10,7 +10,7 @@ if (Test-Path "HKLM:\SOFTWARE\WOW6432Node\Google\Update") {
     # Get the Google Update installation path
     $googleUpdatePath = Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\WOW6432Node\Google\Update" -Name "UpdateDefault"
     
-    # Check if the Google Update executable exists
+    #Check if the Google Update executable exists
     if (Test-Path "$googleUpdatePath\GoogleUpdate.exe") {
         # Run Google Update with the "/ua" flag to force update check
         & "$googleUpdatePath\GoogleUpdate.exe" /ua /tag
@@ -26,6 +26,7 @@ if (Test-Path "HKLM:\SOFTWARE\WOW6432Node\Google\Update") {
 #Microsoft Edge is updated through Windows Update, so to force Microsoft Edge to check for updates, you'll need to trigger a check for Windows updates. Here's a #PowerShell script to do that:
 
 # Check if the Windows Update Agent is available on the system
+
 if (Get-Command -Name "Get-WindowsUpdate" -ErrorAction SilentlyContinue) {
     # Run the Windows Update Agent with the EdgeUpdate parameter to check for updates
     Get-WindowsUpdate -MicrosoftProductName "EdgeUpdate" -Install
